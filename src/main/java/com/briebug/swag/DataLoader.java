@@ -17,8 +17,8 @@ import java.util.List;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private ProductRepository productRepository;
-    private CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
     public DataLoader(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
@@ -26,18 +26,18 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         Category apparel = new Category("Apparel");
         categoryRepository.save(apparel);
 
         List<Product> products = new ArrayList<>();
-        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Black/SM", apparel, new BigDecimal(19.99),10, Size.SMALL, Color.BLACK));
-        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Black/MED", apparel, new BigDecimal(19.99),10, Size.MEDIUM, Color.BLACK));
-        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Black/LG", apparel, new BigDecimal(19.99),10, Size.LARGE, Color.BLACK));
-        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Orange/SM", apparel, new BigDecimal(19.99),5, Size.SMALL, Color.ORANGE));
-        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Orange/MED", apparel, new BigDecimal(19.99),5, Size.MEDIUM, Color.ORANGE));
-        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Orange/LG", apparel, new BigDecimal(19.99),5, Size.LARGE, Color.ORANGE));
+        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Black/SM", apparel, new BigDecimal(20),10, Size.SMALL, Color.BLACK));
+        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Black/MED", apparel, new BigDecimal(20),10, Size.MEDIUM, Color.BLACK));
+        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Black/LG", apparel, new BigDecimal(20),10, Size.LARGE, Color.BLACK));
+        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Orange/SM", apparel, new BigDecimal(20),5, Size.SMALL, Color.ORANGE));
+        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Orange/MED", apparel, new BigDecimal(20),5, Size.MEDIUM, Color.ORANGE));
+        products.add(new Shirt("Briebug Logo Polo","Briebug Logo Polo: Orange/LG", apparel, new BigDecimal(20),5, Size.LARGE, Color.ORANGE));
 
         productRepository.saveAll(products);
     }

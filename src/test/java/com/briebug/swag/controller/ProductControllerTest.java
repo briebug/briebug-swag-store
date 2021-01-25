@@ -106,7 +106,7 @@ class ProductControllerTest {
     @Test
     void createValidRequestIsCreated() throws Exception {
         Category apparel = new Category("Apparel");
-        Product product = new Shirt(1L,"Briebug Logo Polo","Briebug Logo Polo: Orange/LG", apparel, new BigDecimal(19.99),5, Size.LARGE, Color.ORANGE);
+        Product product = new Shirt(1L,"Briebug Logo Polo","Briebug Logo Polo: Orange/LG", apparel, new BigDecimal(20),5, Size.LARGE, Color.ORANGE);
         Mockito.doNothing().when(productService).save(product);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/products/")
@@ -129,7 +129,7 @@ class ProductControllerTest {
     @Test
     void updateValidRequestSuccess() throws Exception {
         Category apparel = new Category("Apparel");
-        Product product = new Shirt(1L,"Briebug Logo Polo","Briebug Logo Polo: Orange/LG", apparel, new BigDecimal(19.99),5, Size.LARGE, Color.ORANGE);
+        Product product = new Shirt(1L,"Briebug Logo Polo","Briebug Logo Polo: Orange/LG", apparel, new BigDecimal(20),5, Size.LARGE, Color.ORANGE);
         Mockito.doNothing().when(productService).update(product,1);
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/products/{id}",1)
@@ -152,7 +152,7 @@ class ProductControllerTest {
     @Test()
     void updateInvalidProductIdNotFound() throws Exception {
         Category apparel = new Category("Apparel");
-        Product product = new Shirt(1L,"Briebug Logo Polo","Briebug Logo Polo: Orange/LG", apparel, new BigDecimal(19.99),5, Size.LARGE, Color.ORANGE);
+        Product product = new Shirt(1L,"Briebug Logo Polo","Briebug Logo Polo: Orange/LG", apparel, new BigDecimal(20),5, Size.LARGE, Color.ORANGE);
         Mockito.doThrow(new ResourceNotFoundException("product not found")).when(productService).update(product,99);
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/products/{id}",99)
